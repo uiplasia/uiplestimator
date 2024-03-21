@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.55e7bd5e.css",
+    "main.js": "/static/js/main.3fac0a36.js",
+    "static/js/453.7e263f18.chunk.js": "/static/js/453.7e263f18.chunk.js",
+    "static/media/Livingroom.jpg": "/static/media/Livingroom.5edb258cba6b1741009e.jpg",
+    "static/media/simphony1.webp": "/static/media/simphony1.75429c1fe68ffab4dd26.webp",
+    "static/media/simphony.webp": "/static/media/simphony.34bc76e25443c793146d.webp",
+    "static/media/classic.webp": "/static/media/classic.2dd37f6b541cf9e04f11.webp",
+    "static/media/boss.png": "/static/media/boss.156ea3efaf299fc4d031.png",
+    "static/media/classic1.webp": "/static/media/classic1.36bb5d58f1996a6a50b1.webp",
+    "static/media/simphony2.webp": "/static/media/simphony2.ce6764e3458151e1ffd8.webp",
+    "static/media/speackyourself.webp": "/static/media/speackyourself.9749ee6cb1416c0f1791.webp",
+    "static/media/companylogo.jpg": "/static/media/companylogo.3179b564e0330c678aa2.jpg",
+    "static/media/BLOK_LOGO.jpg": "/static/media/BLOK_LOGO.730c7600c3190da93af2.jpg",
+    "static/media/room-side.webp": "/static/media/room-side.e25700cf98f71b885ebb.webp",
+    "index.html": "/index.html",
+    "main.55e7bd5e.css.map": "/static/css/main.55e7bd5e.css.map",
+    "main.3fac0a36.js.map": "/static/js/main.3fac0a36.js.map",
+    "453.7e263f18.chunk.js.map": "/static/js/453.7e263f18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.55e7bd5e.css",
+    "static/js/main.3fac0a36.js"
+  ]
+}
