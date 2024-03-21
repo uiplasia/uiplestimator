@@ -1,0 +1,4 @@
+.select-transparent,
+.select-transparent option {
+    background-color: transparent;
+}
