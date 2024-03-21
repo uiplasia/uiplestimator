@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/uiplestimator/static/css/main.7c98927b.css",
+    "main.js": "/uiplestimator/static/js/main.2c35e0b7.js",
+    "static/js/453.7e263f18.chunk.js": "/uiplestimator/static/js/453.7e263f18.chunk.js",
+    "static/media/Livingroom.jpg": "/uiplestimator/static/media/Livingroom.5edb258cba6b1741009e.jpg",
+    "static/media/simphony1.webp": "/uiplestimator/static/media/simphony1.75429c1fe68ffab4dd26.webp",
+    "static/media/simphony.webp": "/uiplestimator/static/media/simphony.34bc76e25443c793146d.webp",
+    "static/media/classic.webp": "/uiplestimator/static/media/classic.2dd37f6b541cf9e04f11.webp",
+    "static/media/boss.png": "/uiplestimator/static/media/boss.156ea3efaf299fc4d031.png",
+    "static/media/classic1.webp": "/uiplestimator/static/media/classic1.36bb5d58f1996a6a50b1.webp",
+    "static/media/simphony2.webp": "/uiplestimator/static/media/simphony2.ce6764e3458151e1ffd8.webp",
+    "static/media/speackyourself.webp": "/uiplestimator/static/media/speackyourself.9749ee6cb1416c0f1791.webp",
+    "static/media/companylogo.jpg": "/uiplestimator/static/media/companylogo.3179b564e0330c678aa2.jpg",
+    "static/media/BLOK_LOGO.jpg": "/uiplestimator/static/media/BLOK_LOGO.730c7600c3190da93af2.jpg",
+    "static/media/room-side.webp": "/uiplestimator/static/media/room-side.e25700cf98f71b885ebb.webp",
+    "index.html": "/uiplestimator/index.html",
+    "main.7c98927b.css.map": "/uiplestimator/static/css/main.7c98927b.css.map",
+    "main.2c35e0b7.js.map": "/uiplestimator/static/js/main.2c35e0b7.js.map",
+    "453.7e263f18.chunk.js.map": "/uiplestimator/static/js/453.7e263f18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c98927b.css",
+    "static/js/main.2c35e0b7.js"
+  ]
+}
