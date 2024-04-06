@@ -3,8 +3,12 @@ import './ComponentMainStyle.css';
 import ClientDetailCredentialTitle from './ClientDetailCredentialTitle';
 import livingRoomBackground from '../assets/room-side.webp';
 import RightNavBar from './RightNavBar';
+import {motion} from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {FcAdvance} from "react-icons/fc";
+import { Tooltip } from 'react-tooltip';
 
-export const ClientDetailCredential = ({ onNext,targetId }) => {
+export const ClientDetailCredential = ({ onNext,targetId,onSkipNext }) => {
   const labels = {
     clientName: <span style={{ color: 'white' }}>Client Name</span>,
     projectId: <span style={{ color: 'white' }}>Project ID</span>,
@@ -15,6 +19,12 @@ export const ClientDetailCredential = ({ onNext,targetId }) => {
     ceilingHeight: <span style={{ color: 'white' }}>Ceiling Height sqft</span>,
     styling: <span style={{ color: 'white' }}>Styling</span>,
   };
+
+  const StylingOptions = ["Select Styling", "Low", "Medium", "High", "Very High"]
+  const CityOptions = ["Select a city","Mumbai", "Ahmedabad", "Hyderabad", "Metro city 1", "Metro city 2", "Metro city Outskirt"]
+  const ProjectTypeOptions= ["Select a project type", "Warmsell", "Bareshell", "Interior Renovation", "Architecture"]
+  const PropertyTyOptions = ["Select Property Type", "Apartment","Bungalow","Farmhouse","Villa"]
+  const CeilingHeightOptions = ["10", "11", "12", "13", "14", "14+"]
 
   const [formData, setFormData] = useState({
     clientName: '',
@@ -44,6 +54,14 @@ export const ClientDetailCredential = ({ onNext,targetId }) => {
     onNext({ ...formData, ...formData });
   };
 
+  const [ref, inView] = useInView();
+
+  // Define your animation properties
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 2.5 } },
+  };
+
   return (
     <div className='client-detail-big-container' style={{backgroundImage:`url(${livingRoomBackground})`,backgroundSize:'80%', height:'100vh', overflow:"hidden"}}>
       <div style={{marginBottom:'60px'}}>
@@ -55,17 +73,19 @@ export const ClientDetailCredential = ({ onNext,targetId }) => {
             <div className="col-md-4">
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.clientName}</label>
-                <input
+                <motion.input
                   type="text"
                   className="form-control client-detail-input"
                   name="clientName"
                   value={formData.clientName}
                   onChange={handleChange}
+                  whileHover={{scale:1.2}}
+                  style={{textAlign:'center'}}
                 />
               </div>
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.projectId}</label>
-                <input
+                <motion.input
                   type="text"
                   className="form-control client-detail-input"
                   name="projectId"
@@ -73,11 +93,13 @@ export const ClientDetailCredential = ({ onNext,targetId }) => {
                   onChange={handleChange}
                   placeholder='Please click any key'
                   required
+                  whileHover={{scale:1.2}}
+                  style={{textAlign:'center'}}
                 />
               </div>
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.carpetArea}</label>
-                <input
+                <motion.input
                   type="number"
                   min="0"
                   className="form-control client-detail-input"
@@ -85,98 +107,138 @@ export const ClientDetailCredential = ({ onNext,targetId }) => {
                   value={formData.carpetArea}
                   onChange={handleChange}
                   required
+                  whileHover={{scale:1.2}}
+                  style={{textAlign:'center'}}
                 />
               </div>
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.ceilingHeight}</label>
-                <select
+                <motion.select
                   className="form-select client-detail-select"
                   name="ceilingHeight"
                   value={formData.ceilingHeight}
                   onChange={handleChange}
                   required
+                  whileHover={{scale:1.2}}
+                  style={{textAlign:'center'}}
                 >
                   <option value="">Select Ceiling Height</option>
-                  <option value="10ft">10</option>
-                  <option value="11ft">11</option>
-                  <option value="12ft">12</option>
-                  <option value="13ft">13</option>
-                  <option value="14ft">14</option>
-                  <option value="14+ft">14+</option>
-                </select>
+                  {CeilingHeightOptions.map((option,index) =>(
+                    <motion.option key={index} value={option} style={{textAlign:'center'}}>
+                      {option}
+                    </motion.option>
+                  ))}
+                </motion.select>
               </div>
             </div>
             <div className="col-md-4">
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.propertyType}</label>
-                <select
+                <motion.select
                   className="form-select client-detail-select"
                   name="propertyType"
                   value={formData.propertyType}
                   onChange={handleChange}
                   required
+                  whileHover={{scale:1.2}}
                 >
-                  <option value="">Select Property Type</option>
-                  <option value="Apartment">Apartment</option>
-                  <option value="Bungalow">Bungalow</option>
-                  <option value="Farmhouse">Farmhouse</option>
-                  <option value="Villa">Villa</option>
-                </select>
+                  {PropertyTyOptions.map((option,index)=>(
+                    <motion.option key={index} value={option} style={{textAlign:'center'}}>
+                      {option}
+                    </motion.option>
+                  ))}
+                </motion.select>
               </div>
               <div className='mb-1'>
                 <label className='form-label client-detail-label'>{labels.projectType}</label>
-                <select
+                <motion.select
                   className='form-select client-detail-select'
                   name='projectType'
                   value={formData.projectType}
                   onChange={handleChange}
                   required
+                  whileHover={{scale:1.2}}
                 >
-                  <option value="">Select Project Type</option>
-                  <option value="Warmsell">Warmsell</option>
-                  <option value="Bareshell">Bareshell</option>
-                  <option value="Interior Renovation">Interior Renovation</option>
-                  <option value="Architecture">Architecture</option>
-                </select>
+                  {ProjectTypeOptions.map((option,index)=>(
+                    <motion.option key={index} value={option} style={{textAlign:'center'}}>
+                      {option}
+                    </motion.option>
+                  ))}
+                </motion.select>
               </div>
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.city}</label>
-                <select
+                <motion.select
                   className="form-select client-detail-select"
                   name="city"
                   value={formData.city}
                   onChange={handleChange}
                   required
+                  whileHover={{scale:1.2}}
                 >
-                  <option value="">Select City</option>
-                  <option value="Mumbai">Mumbai</option>
-                  <option value="Ahmedabad">Ahmedabad</option>
-                  <option value="Hyderabad">Hyderabad</option>
-                  <option value="Metro city 1">Metro city 1</option>
-                  <option value="Metro city 2">Metro city 2</option>
-                  <option value="Metro city Outskirt">Metro city Outskirt</option>
-                </select>
+                  {CityOptions.map((option,index)=>(
+                    <motion.option key={index} value={option} style={{textAlign:'center'}}>
+                      {option}
+                    </motion.option>
+                  ))}
+                </motion.select>
               </div>
               <div className="mb-1">
                 <label className="form-label client-detail-label">{labels.styling}</label>
-                <select
+                <motion.select
                   className="form-select client-detail-select"
                   name="styling"
                   value={formData.styling}
                   onChange={handleChange}
                   required
+                  whileHover={{ scale: 1.2 }}
                 >
-                  <option value="">Select Styling</option>
-                  <option value="Low">Low</option>
-                  <option value="Medium">Medium</option>
-                  <option value="High">High</option>
-                  <option value="Very High">Very High</option>
-                </select>
+                  {StylingOptions.map((option, index) => (
+                    <motion.option key={index} value={option} style={{textAlign:'center'}}>
+                      {option}
+                    </motion.option>
+                  ))}
+                </motion.select>
               </div>
             </div>
+            <motion.div
+              animate={{ scale: [0.9, 1, 0.9], 
+              transition: { repeat: Infinity, duration: 2 } }}
+              style={{marginLeft:"750px", marginTop:"50px"}}
+            >
+              <button 
+                style={{ backgroundColor:'transparent', border:'none' }} 
+                data-tooltip-id='tooltip'
+                data-tooltip-content="Hey! skip to The next page"
+                data-tooltip-place='bottom'
+                onClick={onSkipNext}
+              >
+                <FcAdvance 
+                  style={{marginLeft:"80%", fontSize:"50px"}}
+                />
+              </button>
+              <Tooltip id='tooltip'/>
+            </motion.div>
           </div>
           <div className="text-center">
-            <button type="button" className="btn btn-primary" onClick={handleNext} style={{marginTop:"100px"}}>Next</button>
+            <motion.button 
+              type="button" 
+              className="btn btn-primary" 
+              onClick={handleNext} 
+              style={{marginTop:"10px"}}
+              whileHover={{ scale: 1.4 }}
+                  whileTap={{
+                    scale: 0.8,
+                    rotate: -83,
+                    borderRadius: "90%"
+                  }} 
+                  ref={ref}
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={buttonVariants} 
+            >
+              Next
+            </motion.button>
           </div>
         </div>
         <div>

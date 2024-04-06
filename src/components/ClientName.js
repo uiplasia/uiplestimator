@@ -1,9 +1,10 @@
 import React from 'react'
-import './ComponentMainStyle.css'
+import './ComponentMainStyle.css';
+import {motion} from 'framer-motion';
 
 const ClientName = ({clientName,setClientName}) => {
   return (
-    <div className='container-center-label-above-field'>
+    <motion.div whileHover={{scale:1.1}} className='container-center-label-above-field'>
       <label htmlFor='clientName'>Client Name</label>
       <input
       id='clientName'
@@ -11,7 +12,7 @@ const ClientName = ({clientName,setClientName}) => {
       value={clientName}
       onChange={(e)=>setClientName(e.target.value)}
       />
-    </div>
+    </motion.div>
   )
 }
 

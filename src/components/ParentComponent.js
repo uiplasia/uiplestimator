@@ -19,6 +19,8 @@ const ParentComponent = () => {
   const [showCategorySubcategoryForm, setShowCategorySubcategoryForm] = useState(false);
   const [submittedData, setSubmittedData] = useState([]);
   const [showPrintPage, setShowPrintPage] = useState(false);
+  const [/*showCategorySubcategoryPage*/,setShowCategorySubcategoryPage]=useState(false);
+  
   const handleNext = (data) => {
       const requiredFields = ['projectId', 'propertyType', 'projectType', 'city', 'carpetArea', 'ceilingHeight', 'styling'];
       const missingFields = requiredFields.filter(field => !data[field]);
@@ -27,7 +29,7 @@ const ParentComponent = () => {
       alert(`Please fill in the following fields: ${missingFields.join(', ')}`);
       return;
     }
-  setFormData({ ...formData, ...data });
+    setFormData({ ...formData, ...data });
     setShowCategorySubcategoryForm(true);
   };
   const handlePrint = () => {
@@ -57,6 +59,15 @@ const ParentComponent = () => {
     );
   };
 
+  const handleSkip = () => {
+    // setShowCategorySubcategoryForm(false);
+    setShowPrintPage(true);
+  };
+
+  const handleSkipNext= () =>{
+    setShowCategorySubcategoryPage(true)
+  }
+
   const handleSubmit = (data) => {
     const updatedFormData = { ...formData, ...data };
     const cleanedFormData = removeCircularReferences(updatedFormData);
@@ -64,25 +75,43 @@ const ParentComponent = () => {
     setSubmittedData([...submittedData, cleanedFormData]);
   };
 
-const buttons = document.querySelectorAll('button');
-const buttonStyles = Array.from(buttons).map(button => button.style.display);
+  const buttons = document.querySelectorAll('button');
+  const buttonStyles = Array.from(buttons).map(button => button.style.display);
 
-const handlePrintPage = () => {
-  buttons.forEach((button, index) => {
-    button.style.display = 'none';
-  });
+  const handlePrintPage = () => {
+    buttons.forEach((button, index) => {
+      button.style.display = 'index';
+    });
 
-  window.print();
+    window.print();
 
-  // Show the buttons again after printing
-  buttons.forEach((button, index) => {
-    button.style.display = buttonStyles[index];
-  });
-};
+    // Show the buttons again after printing
+    buttons.forEach((button, index) => {
+      button.style.display = buttonStyles[index];
+    });
+  };
   
+  // -------------------------------handleDelete----------------------------------------------------Almost done
+
+  const handleDelete = () => {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    const updatedSubmittedData = submittedData.filter((_, index) => {
+      return !Array.from(checkboxes).some((checkbox) => {
+        const row = checkbox.closest('tr');
+        const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+        return rowIndex === index;
+      });
+    });
+  
+    setSubmittedData(updatedSubmittedData);
+  };
+  
+
+  // ------------------------------handleDelete-----------------------------------------------------Amost done
+
   return (
-    <div>
-      {!showCategorySubcategoryForm && !showPrintPage && <ClientDetailCredential onNext={handleNext} formData={formData}/>}
+      <>
+      {!showCategorySubcategoryForm && !showPrintPage && <ClientDetailCredential onNext={handleNext} onSkipNext={handleSkipNext} formData={formData}/>}
       {showCategorySubcategoryForm && !showPrintPage && (
         <>
           <CategorySubcategoryStyleK
@@ -90,14 +119,33 @@ const handlePrintPage = () => {
             onSubmit={handleSubmit}
             onPrint={handlePrint}
             formData={formData}
+            onDelete={handleDelete}
+            onSkip={handleSkip}
           />
           {submittedData.map((data, index) => (
             <CategorySubcategoryStyleKTablePrint key={index} formData={data} index={index}/>
           ))}
         </>
       )}
-      {showPrintPage && <PrintPage onPrintPage={handlePrintPage} onReturn={handleReturn} formData={formData} clientData={formData} submittedData={submittedData} />}  
-    </div>
+      {showPrintPage && (
+        <>
+          <PrintPage
+            onPrint={handlePrint}
+            onPrintPage={handlePrintPage}
+            onReturn={handleReturn}
+            formData={formData}
+            clientData={formData}
+            submittedData={submittedData}
+            onDelete={handleDelete}
+            tablePrintComponent={
+              submittedData.map((data, index) => (
+                <CategorySubcategoryStyleKTablePrint key={index} formData={data} index={index}/>
+              ))
+            }
+          />
+        </>
+      )}
+    </>
   );
 };
 

@@ -6,51 +6,76 @@
 .container-main{
     margin-bottom: 500px;
 }
-.bg-video {
-    position: fixed;
-    top: 0;
-    left: 0;
+  
+.client-detail-credential {
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.client-detail-credential.hovered {
+  background-color: #f0f0f0; 
+}
+
+@media print {
+  .DeletePartExclude{
+    display: none;
+  }
+  .btn, .brand-btn-b {
+    display: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
-    z-index: -1;
+    font-size: 12px;
   }
-  
-  .client-detail-credential {
-    background-color: #fff;
-    transition: background-color 0.3s ease;
+  .container {
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
   }
-  
-  .client-detail-credential.hovered {
-    background-color: #f0f0f0; 
-  }  
-  
-  @media print {
-    /* Hide the Brand component when printing */
-    .btn, .brand-btn-b {
-      display: none;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      font-size: 12px;
-    }
-    .container {
-      width: 100vw;
-      height: 100%;
-      overflow: hidden;
-    }
-    .table-resize{
-      width: 100%;
-      font-size: 10px;
-    }
-    .table td {
-      white-space: normal !important;
-      word-wrap: break-word;
-    }
-    .table-header{
-      font-size: 10px;
-    }
+  .table-resize{
+    width: 100%;
+    font-size: 10px;
   }
+  .table td {
+    white-space: normal !important;
+    word-wrap: break-word;
+  }
+  .table-header{
+    font-size: 10px;
+  }
+  .check-box-button-print{
+    display: none;
+  }
+  th {
+    background-color: #e6c300 !important;
+    color: #0d0d0d !important;
+  }
+  img[src*="localhost:3000"] {
+    display: none;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  @page :header {
+    display: none;
+  }
+
+  @page :footer {
+    display: none;
+  }
+
+  body::before {
+    content: attr(data-current-date);
+    position: fixed;
+    top: 10px;
+    right: 60px;
+    font-size: 12px;
+    color: #333;
+  }
+}
