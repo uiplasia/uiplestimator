@@ -1,5 +1,5 @@
 const CategorySubcategoryStyleKTablePrint = ({ formData, index, quantity_multiplier }) => {
-  const { categories, subcategories, planTypes, unit, rate, specification, percentageMarket } = formData || {};
+  const { categories, subcategories, planTypes, unit, total_sqft, rate,price, specification, percentageMarket } = formData || {};
   const {carpetArea} = formData;
   return (
     <div>
@@ -35,7 +35,7 @@ const CategorySubcategoryStyleKTablePrint = ({ formData, index, quantity_multipl
               <td className="align-middle" style={{ width: '100px' }}>{rate}</td>
               <td className="align-middle " style={{ width: '50px' }}>{carpetArea*percentageMarket*rate}{console.log("Percentage Market:", percentageMarket)}</td>{/*let do the local part here, price *= {carpetArea*percentageMarket*rate}{console.log("Percentage Market:", percentageMarket)}*/}
               <td className="align-middle" style={{ width: '200px' }}>{specification}</td>
-              <td className="align-middle DeletePartExclude" style={{ width: '70px'}}><input type="checkbox"/></td>
+              <td className="align-middle DeletePartExclude" style={{ width: '70px'}}><input type="checkbox" data-index={index}/></td>
             </tr>
           </tbody>
         </table>

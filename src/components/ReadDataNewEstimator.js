@@ -55,6 +55,7 @@ const ReadDataNewEstimator = ({ type, category, subcategory, onChange }) => {
   } else if (type === 'percentage_market') {
     uniqueValues = [...new Set(data.map(item => item.percentage_market))];
   }
+
   return (
     <select
       className="form-select bg-transparent btn-warning"

@@ -92,20 +92,33 @@ const ParentComponent = () => {
   };
   
   // -------------------------------handleDelete----------------------------------------------------Almost done
+  // This part exorsted me !!!!!!!!
+  
+  // const handleDelete = () => {
+  //   const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  //   const updatedSubmittedData = submittedData.filter((_, index) => {
+  //     return !Array.from(checkboxes).some((checkbox) => {
+  //       const row = checkbox.closest('tr');
+  //       const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+  //       console.log(`Checkbox index: ${index}, Row index: ${rowIndex}`);
+  //       return rowIndex === index;
+  //     });
+  //   });
+  
+  //   setSubmittedData(updatedSubmittedData);
+  // };
 
   const handleDelete = () => {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
     const updatedSubmittedData = submittedData.filter((_, index) => {
       return !Array.from(checkboxes).some((checkbox) => {
-        const row = checkbox.closest('tr');
-        const rowIndex = Array.from(row.parentNode.children).indexOf(row);
+        const rowIndex = parseInt(checkbox.dataset.index);
+        console.log(`Checkbox index: ${index}, Row index: ${rowIndex}`);
         return rowIndex === index;
       });
     });
-  
     setSubmittedData(updatedSubmittedData);
-  };
-  
+  };  
 
   // ------------------------------handleDelete-----------------------------------------------------Amost done
 
