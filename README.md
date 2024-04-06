@@ -125,3 +125,46 @@ To push your React project to GitHub and make it a private repository, follow th
    - Choose the appropriate permission level (e.g., read access) for each collaborator.
 
 After completing these steps, your React app should be successfully pushed to a private GitHub repository and deployed as a private app, with sharing restricted to specific people only.
+
+To Pussh changes on gitHub
+
+To push changes to the `gh-pages` branch of the existing repository `https://github.com/uiplasia/uiplestimator.git`, you'll need to follow these steps:
+
+1. **Clone the Repository**: If you haven't already, clone the repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/uiplasia/uiplestimator.git
+```
+
+2. **Navigate to the Repository Directory**: Use the `cd` command to navigate into the repository directory:
+
+```bash
+cd uiplestimator
+```
+
+3. **Checkout the `gh-pages` Branch**: If you're not already on the `gh-pages` branch, switch to it using the following command:
+
+```bash
+git checkout gh-pages
+```
+
+4. **Make Changes**: Make the necessary changes to the files in your local repository.
+
+5. **Stage and Commit Changes**: Stage the changes you've made and commit them to the `gh-pages` branch:
+
+```bash
+git add .
+git commit -m "Update: Description of changes made"
+```
+
+Replace `"Update: Description of changes made"` with a meaningful commit message describing the changes you've made.
+
+6. **Push Changes to GitHub**: Finally, push the changes from your local `gh-pages` branch to the `gh-pages` branch on GitHub:
+
+```bash
+git push origin gh-pages
+```
+
+After executing these steps, your changes should be pushed to the `gh-pages` branch of the GitHub repository `https://github.com/uiplasia/uiplestimator.git`.
+
+Make sure you have appropriate permissions to push to the repository. If you encounter any errors, ensure that you have the necessary permissions and that you're using the correct repository URL.
