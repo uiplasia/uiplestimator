@@ -1,0 +1,8 @@
+.select-transparent,
+.select-transparent option {
+    background-color: transparent;
+}
+.scalable-item:hover {
+    transform: scale(1.1); /* Scale up by 10% */
+    transition: transform 0.3s ease; /* Add a smooth transition */
+}
